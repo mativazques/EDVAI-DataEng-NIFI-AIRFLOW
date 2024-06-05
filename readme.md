@@ -1,10 +1,14 @@
 Practica Nifi
 
+Se crearé un pipeline que contará con la siguiente estructura: 
+
+![pipeline](img\pipeline.png)
+
+Este pipeline cumplirá con las siguientes consignas.
+
 1. En el shell de Nifi, crear un script .sh que descargue el archivo titanic.csv al directorio /home/nifi/ingest (crearlo si es necesario). Ejecutarlo con ./home/nifi/ingest/ingest.sh
 
-Resolución: 
-
-El archivo [ingest.sh](src\ingest.sh):
+El archivo [ingest.sh](src\ingest.sh) en el contenedor de nifi:
 
 ```bash
 wget https://dataengineerpublic.blob.core.windows.net/data-engineer/titanic.csv
@@ -37,11 +41,21 @@ El dag se muestra acontinuación:
 
 ![airflow](img\airflow.png)
 
+Previo a correr el dag en Hive hay que crear la base de datos donde se creará la tabla, esto se hace entrando a su entorno y ejecutando: 
+
+```Hive
+create database titanicdb;
+```
+
+A continuación se muestra el dag que ha corrido exitosamente. 
+
 ![dag](img\dag.png)
 
-En cuanto a la tabla en Hive, primero se muestra su estructura y luego los datos calculados. El marco rojo es el promedio de edades, el otro recuadro es la columna en la que se eliminaron los elementos nulos. 
+La tabla en Hive posee la siguiente estructura:
 
 ![table](img\titanic-table.png)
+
+El marco rojo es el promedio de edades según el sexo, el otro recuadro es la columna en la que se eliminaron los elementos nulos. 
 
 ![table.png](img\table.png)
 
