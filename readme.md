@@ -46,7 +46,46 @@ En cuanto a la tabla en Hive, primero se muestra su estructura y luego los datos
 ![table.png](img\table.png)
 
 8) Una vez con la información en el datawarehouse calcular:
-a) Cuántos hombres y cuántas mujeres sobrevivieron
-b) Cuántas personas sobrevivieron según cada clase (Pclass)
-c) Cuál fue la persona de mayor edad que sobrevivió
-d) Cuál fue la persona más joven que sobrevivi
+
+* Cuántos hombres y cuántas mujeres sobrevivieron.
+
+```SQL
+select sex, count(passengerid) 
+from titanic 
+group by sex;
+```
+
+![img/sql1.png](img/sql1.png)
+
+* Cuántas personas sobrevivieron según cada clase (Pclass)
+
+```SQL
+select pclass ex, count(passengerid) 
+from titanic 
+group by pclass;
+```
+
+![img/sql1.png](img/sql2.png)
+
+* Cuál fue la persona de mayor edad que sobrevivió
+
+```SQL
+select name, age, sex, cabin, ticket 
+from titanic 
+order by age DESC 
+limit 1;
+```
+
+![img/sql1.png](img/sql3.png)
+
+* Cuál fue la persona más joven que sobrevivio
+
+```SQL
+select name, age, sex, cabin, ticket 
+from titanic 
+where age is not null 
+order by age ASC
+limit 1;
+```
+
+![img/sql1.png](img/sql4.png)
