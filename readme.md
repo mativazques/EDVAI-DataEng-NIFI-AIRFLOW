@@ -1,6 +1,6 @@
 Practica Nifi
 
-Se crearé un pipeline que contará con la siguiente estructura: 
+Se creará un pipeline que contará con la siguiente estructura: 
 
 ![img/pipeline.png](img/pipeline.png)
 
